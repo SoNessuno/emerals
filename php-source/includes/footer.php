@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="foot__grid">
       <div>
-        <a class="brand" href="#top"><img src="assets/img/logo.svg" width="34" height="34" alt=""><span><?= e(SITE_NAME) ?></span></a>
+        <a class="brand" href="#top"><img src="assets/img/logo-mark.png" width="38" height="38" class="mark" alt=""><span><?= e(SITE_NAME) ?></span></a>
         <p class="foot__txt">La città roleplay italiana su Roblox. Reparti organizzati, economia in euro e uno staff che risponde.</p>
       </div>
       <div>

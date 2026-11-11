@@ -51,77 +51,6 @@
     toast(await copy(e.currentTarget.dataset.copy) ? 'Invito copiato negli appunti' : 'Copia non riuscita');
   });
 
-  /* ---------- SKYLINE (canvas) ---------- */
-  const cv = $('#skyline');
-  if (cv) {
-    const ctx = cv.getContext('2d');
-    let W, H, dpr, layers, cars, t0 = performance.now(), visible = true;
-    const rnd = (a, b) => a + Math.random() * (b - a);
-    const build = () => {
-      dpr = Math.min(devicePixelRatio || 1, 2);
-      W = cv.clientWidth; H = cv.clientHeight;
-      cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      layers = [0, 1, 2].map((l) => {
-        const arr = []; let x = -20;
-        while (x < W + 40) {
-          const w = rnd(34, 90) * (1 + l * .25), h = rnd(70, 230) * (1 + l * .35) * (H / 760 + .5);
-          const wins = [];
-          for (let wx = 8; wx < w - 8; wx += 12) for (let wy = 14; wy < h - 10; wy += 16)
-            if (Math.random() < .42) wins.push([wx, wy, Math.random() * 6.28, rnd(.3, 1)]);
-          arr.push({ x, w, h, wins }); x += w + rnd(2, 14);
-        }
-        return arr;
-      });
-      cars = Array.from({ length: 9 }, () => ({ x: rnd(0, W), v: rnd(30, 90) * (Math.random() < .5 ? 1 : -1), lane: Math.random() < .5 ? 0 : 1, c: Math.random() < .25 ? '#ff5d6c' : Math.random() < .5 ? '#ffc24d' : '#fff' }));
-    };
-    const draw = (now) => {
-      const t = (now - t0) / 1000;
-      ctx.clearRect(0, 0, W, H);
-      const sky = ctx.createLinearGradient(0, 0, 0, H);
-      sky.addColorStop(0, '#03110c'); sky.addColorStop(.6, '#07261b'); sky.addColorStop(1, '#0a3a29');
-      ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
-      const ground = H - 70;
-      layers.forEach((arr, l) => {
-        const col = ['#10402f', '#0c3225', '#082219'][l], par = (l - 1) * 0;
-        arr.forEach((b) => {
-          const by = ground - b.h + l * 0; ctx.fillStyle = col; ctx.fillRect(b.x + par, by, b.w, b.h);
-          if (l > 0) b.wins.forEach(([wx, wy, ph, base]) => {
-            const on = reduce ? .6 : (Math.sin(t * .5 + ph * 3) > -.2 ? base : .12);
-            ctx.fillStyle = `rgba(${l === 2 ? '255,214,120' : '120,255,200'},${on * .55})`;
-            ctx.fillRect(b.x + wx, by + wy, 5, 7);
-          });
-        });
-      });
-      // strada
-      ctx.fillStyle = '#04140e'; ctx.fillRect(0, ground, W, 70);
-      ctx.fillStyle = 'rgba(120,255,200,.14)'; ctx.fillRect(0, ground, W, 1);
-      ctx.setLineDash([14, 14]); ctx.strokeStyle = 'rgba(255,255,255,.12)';
-      ctx.beginPath(); ctx.moveTo(0, ground + 38); ctx.lineTo(W, ground + 38); ctx.stroke(); ctx.setLineDash([]);
-      cars.forEach((c) => {
-        if (!reduce) { c.x += c.v / 60; if (c.x > W + 30) c.x = -30; if (c.x < -30) c.x = W + 30; }
-        const y = ground + (c.lane ? 46 : 22);
-        ctx.fillStyle = c.c; ctx.shadowColor = c.c; ctx.shadowBlur = 14;
-        ctx.fillRect(c.x, y, 12, 3); ctx.shadowBlur = 0;
-        ctx.fillStyle = 'rgba(255,255,255,.06)'; ctx.fillRect(c.x - (c.v > 0 ? 40 : -12), y, 40, 3);
-      });
-      // faro girevole
-      const a = t * .6, bx = W * .72, by = ground - 250;
-      if (!reduce) {
-        const g = ctx.createRadialGradient(bx, by, 0, bx, by, 520);
-        g.addColorStop(0, 'rgba(43,227,154,.0)'); g.addColorStop(1, 'rgba(43,227,154,0)');
-        ctx.save(); ctx.translate(bx, by); ctx.rotate(a);
-        const beam = ctx.createLinearGradient(0, 0, 520, 0);
-        beam.addColorStop(0, 'rgba(43,227,154,.22)'); beam.addColorStop(1, 'rgba(43,227,154,0)');
-        ctx.fillStyle = beam; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(520, -50); ctx.lineTo(520, 50); ctx.fill(); ctx.restore();
-      }
-    };
-    const loop = (now) => { if (visible) draw(now); if (!reduce) requestAnimationFrame(loop); };
-    build(); draw(performance.now());
-    if (!reduce) requestAnimationFrame(loop);
-    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); draw(performance.now()); }, 150); });
-    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(cv);
-  }
-
   /* ---------- CENTRALE OPERATIVA (feed simulato) ---------- */
   const feed = $('#feed');
   if (feed) {
@@ -212,31 +141,32 @@
       const v = vals(), h = hash((v.nome || '') + (v.cognome || '') + (v.nascita || ''));
       const num = 'EM' + String(h % 10000000).padStart(7, '0');
       // sfondo
-      const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#0e7a55'); g.addColorStop(.55, '#0a5a40'); g.addColorStop(1, '#06362a');
+      const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#34234a'); g.addColorStop(.55, '#1f1630'); g.addColorStop(1, '#0d0914');
       x.fillStyle = g; rr(0, 0, W, H, 34); x.fill();
       x.save(); rr(0, 0, W, H, 34); x.clip();
       // guilloche
-      x.strokeStyle = 'rgba(255,255,255,.07)'; x.lineWidth = 1;
+      x.strokeStyle = 'rgba(246,185,59,.09)'; x.lineWidth = 1;
       for (let i = 0; i < 38; i++) { x.beginPath(); for (let px = 0; px <= W; px += 6) { const py = H * .55 + Math.sin(px / 60 + i * .35) * (30 + i * 3) + (i - 19) * 7; px ? x.lineTo(px, py) : x.moveTo(px, py); } x.stroke(); }
       const sh = x.createLinearGradient(0, 0, W, 0); sh.addColorStop(0, 'rgba(255,255,255,.14)'); sh.addColorStop(.5, 'rgba(255,255,255,0)');
       x.fillStyle = sh; x.fillRect(0, 0, W, H / 2);
       x.restore();
       // testata
       x.fillStyle = 'rgba(0,0,0,.28)'; x.fillRect(0, 0, W, 92);
+      x.fillStyle = '#009246'; x.fillRect(0, 92, W / 3, 7); x.fillStyle = '#fff'; x.fillRect(W / 3, 92, W / 3, 7); x.fillStyle = '#ce2b37'; x.fillRect(2 * W / 3, 92, W / 3 + 1, 7);
       x.fillStyle = '#fff'; x.font = '800 30px "Bricolage Grotesque", Inter, sans-serif'; x.textBaseline = 'alphabetic';
       x.fillText('CITTÀ DI EMERALS', 40, 48);
-      x.fillStyle = '#9ff5cf'; x.font = '500 15px "JetBrains Mono", monospace'; x.fillText('CARTA D\'IDENTITÀ · ROLEPLAY', 40, 74);
-      x.fillStyle = '#2be39a'; x.beginPath(); x.moveTo(W - 82, 22); x.lineTo(W - 46, 40); x.lineTo(W - 46, 62); x.lineTo(W - 82, 80); x.lineTo(W - 118, 62); x.lineTo(W - 118, 40); x.closePath(); x.fill();
+      x.fillStyle = '#ffd77a'; x.font = '500 15px "JetBrains Mono", monospace'; x.fillText('CARTA D\'IDENTITÀ · ROLEPLAY', 40, 74);
+      x.fillStyle = '#f6b93b'; x.beginPath(); x.moveTo(W - 82, 22); x.lineTo(W - 46, 40); x.lineTo(W - 46, 62); x.lineTo(W - 82, 80); x.lineTo(W - 118, 62); x.lineTo(W - 118, 40); x.closePath(); x.fill();
       x.fillStyle = '#04140e'; x.font = '800 26px "Bricolage Grotesque", sans-serif'; x.textAlign = 'center'; x.fillText('E', W - 82, 61); x.textAlign = 'left';
       // foto
-      x.fillStyle = '#d7efe4'; rr(40, 124, 220, 270, 18); x.fill();
+      x.fillStyle = '#f3dcc0'; rr(40, 124, 220, 270, 18); x.fill();
       x.save(); rr(40, 124, 220, 270, 18); x.clip();
-      const pg = x.createLinearGradient(0, 124, 0, 394); pg.addColorStop(0, '#bfe6d4'); pg.addColorStop(1, '#8fc9b0'); x.fillStyle = pg; x.fillRect(40, 124, 220, 270);
-      x.fillStyle = '#0a5a40'; x.beginPath(); x.arc(150, 230, 52, 0, 7); x.fill();
+      const pg = x.createLinearGradient(0, 124, 0, 394); pg.addColorStop(0, '#ffd9a0'); pg.addColorStop(1, '#e89a5c'); x.fillStyle = pg; x.fillRect(40, 124, 220, 270);
+      x.fillStyle = '#2b2030'; x.beginPath(); x.arc(150, 230, 52, 0, 7); x.fill();
       x.beginPath(); x.ellipse(150, 394, 100, 112, 0, Math.PI, 0); x.fill(); x.restore();
       // campi
       const field = (label, val, px, py, size = 30) => {
-        x.fillStyle = '#8fe8c4'; x.font = '500 13px "JetBrains Mono", monospace'; x.fillText(label, px, py);
+        x.fillStyle = '#f6b93b'; x.font = '500 13px "JetBrains Mono", monospace'; x.fillText(label, px, py);
         x.fillStyle = '#fff'; x.font = `700 ${size}px "Bricolage Grotesque", Inter, sans-serif`; x.fillText(val, px, py + size + 2);
       };
       field('COGNOME', (v.cognome || '—').toUpperCase(), 296, 138, 34);
@@ -247,7 +177,7 @@
       field('N. DOCUMENTO', num, 620, 150, 22);
       // MRZ
       x.fillStyle = 'rgba(0,0,0,.34)'; x.fillRect(0, H - 104, W, 104);
-      x.fillStyle = '#c8f7e1'; x.font = '500 22px "JetBrains Mono", monospace';
+      x.fillStyle = '#f2e4cc'; x.font = '500 22px "JetBrains Mono", monospace';
       const l1 = ('IDEMR' + num + '<<' + up(v.roblox || '')).padEnd(34, '<').slice(0, 34);
       const l2 = (up(v.cognome || '') + '<<' + up(v.nome || '')).padEnd(34, '<').slice(0, 34);
       x.fillText(l1, 40, H - 62); x.fillText(l2, 40, H - 28);

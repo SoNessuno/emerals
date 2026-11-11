@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EMERALS RP — Community Roleplay italiana su Roblox</title>
 <meta name="description" content="EMERALS RP: la città roleplay italiana su Roblox. Reparti, documenti, economia in euro e staff sempre presente.">
-<meta name="theme-color" content="#04100c">
+<meta name="theme-color" content="#0c0a10">
 <meta property="og:type" content="website">
 <meta property="og:title" content="EMERALS RP — Community Roleplay italiana su Roblox">
 <meta property="og:description" content="EMERALS RP: la città roleplay italiana su Roblox. Reparti, documenti, economia in euro e staff sempre presente.">
 <meta property="og:locale" content="it_IT">
-<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=1794431801">
+<link rel="stylesheet" href="assets/css/style.css?v=1794433262">
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -23,7 +24,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav__in">
     <a class="brand" href="#top" aria-label="EMERALS RP — inizio pagina">
-      <img src="assets/img/logo.svg" width="34" height="34" alt="">
+      <img src="assets/img/logo-mark.png" width="38" height="38" class="mark" alt="">
       <span>EMERALS RP</span>
     </a>
     <nav class="nav__links" id="navLinks" aria-label="Principale">
@@ -44,8 +45,10 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <canvas id="skyline" aria-hidden="true"></canvas>
-  <div class="hero__fade" aria-hidden="true"></div>
+  <div class="hero__art">
+    <img src="assets/img/hero.png" srcset="assets/img/hero-1024.png 1024w, assets/img/hero.png 1536w" sizes="100vw" width="1536" height="1024" alt="Stemma di EMERALS RP: scudo tricolore con corona e gemma smeraldo, la città italiana al tramonto con volante e elicottero della polizia" fetchpriority="high">
+    <span class="siren" aria-hidden="true"></span>
+  </div>
   <div class="wrap hero__in">
     <div class="hero__copy">
       <p class="chip"><span class="dot dot--live"></span> Città aperta · Roleplay italiano su Roblox</p>
@@ -362,7 +365,7 @@
   <div class="wrap">
     <div class="foot__grid">
       <div>
-        <a class="brand" href="#top"><img src="assets/img/logo.svg" width="34" height="34" alt=""><span>EMERALS RP</span></a>
+        <a class="brand" href="#top"><img src="assets/img/logo-mark.png" width="38" height="38" class="mark" alt=""><span>EMERALS RP</span></a>
         <p class="foot__txt">La città roleplay italiana su Roblox. Reparti organizzati, economia in euro e uno staff che risponde.</p>
       </div>
       <div>
@@ -398,6 +401,6 @@
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>window.EMERALS = {"districts":{"polizia":{"name":"Polizia","code":"PD","icon":"shield","tag":"Ordine pubblico","text":"Pattuglie, controlli e interventi sul territorio. Ogni arresto e ogni multa vengono registrati e finiscono nello storico del cittadino.","points":["Arresti e multe registrati con un comando","Statistiche per singolo agente","Registro consultabile dallo staff"],"cmds":["/arresto","/multa","/registro_arresti"]},"soccorso":{"name":"Soccorso","code":"SS","icon":"cross","tag":"SSU · SSD","text":"Turni di servizio online e offline con pannelli dedicati: la città sa sempre chi è operativo e chi no.","points":["Pannelli SSU/SSD con stato in tempo reale","Elenco operatori attualmente in servizio","Annunci di apertura e chiusura sessione"],"cmds":["/ssu_online","/ssd_online"]},"istituzioni":{"name":"Istituzioni","code":"IS","icon":"landmark","tag":"Documenti","text":"Cittadinanza, patente e porto d'armi: richiedi tutto da un modulo, lo staff revisiona e i ruoli vengono assegnati automaticamente.","points":["Tre tipi di richiesta con modulo guidato","Revisione dello staff con esito tracciato","Ruolo assegnato in automatico all'approvazione"],"cmds":["/registra","/profilo","/richieste_aperte"]},"imprese":{"name":"Attività","code":"AT","icon":"briefcase","tag":"Imprese","text":"Apri la tua attività e fai crescere un'impresa nella città, con richieste dedicate e supporto dello staff.","points":["Richiesta di fondazione dedicata","Gestione e approvazione dallo staff","Partnership con altre community"],"cmds":["/partnership","/partnership_lista"]},"banca":{"name":"Banca","code":"BK","icon":"coins","tag":"Economia in euro","text":"Portafoglio, conto corrente, bonifici e premio giornaliero. Un'economia vera, con livelli ed esperienza.","points":["Contanti e conto separati","Bonifici tra cittadini","Premio giornaliero, livelli e classifica"],"cmds":["/conto","/bonifico","/daily"]},"supporto":{"name":"Supporto","code":"CS","icon":"headset","tag":"Ticket","text":"Il centro assistenza della città: apri un ticket, vieni preso in carico da un membro dello staff e segui la risoluzione.","points":["Pannello ticket con categorie","Presa in carico tracciata","Statistiche per singolo staff"],"cmds":["/ticket_pannello","/ticket_stats"]},"moderazione":{"name":"Moderazione","code":"MD","icon":"scale","tag":"Regole & sanzioni","text":"Avvisi con escalation, silenziamenti, ban e storico completo. Le regole valgono per tutti, nello stesso modo.","points":["Avvertimenti con escalation automatica","Log di ogni azione rilevante","Sanzioni anche per lo staff"],"cmds":["/warn","/mute","/warnings"]}},"discord":"https://discord.gg/RyScfryWxt","robloxPlace":"","api":{"stats":"api/stats","contact":"api/contact"}};</script>
-<script src="assets/js/main.js?v=1794431801" defer></script>
+<script src="assets/js/main.js?v=1794433236" defer></script>
 </body>
 </html>

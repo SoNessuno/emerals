@@ -17,8 +17,10 @@ $MAP = [
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <canvas id="skyline" aria-hidden="true"></canvas>
-  <div class="hero__fade" aria-hidden="true"></div>
+  <div class="hero__art">
+    <img src="assets/img/hero.png" srcset="assets/img/hero-1024.png 1024w, assets/img/hero.png 1536w" sizes="100vw" width="1536" height="1024" alt="Stemma di EMERALS RP: scudo tricolore con corona e gemma smeraldo, la città italiana al tramonto con volante e elicottero della polizia" fetchpriority="high">
+    <span class="siren" aria-hidden="true"></span>
+  </div>
   <div class="wrap hero__in">
     <div class="hero__copy">
       <p class="chip"><span class="dot dot--live"></span> Città aperta · Roleplay italiano su Roblox</p>

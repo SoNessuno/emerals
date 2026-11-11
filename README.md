@@ -13,6 +13,7 @@ Workers & Pages → Create → Pages → Connect to Git → scegli questo repo, 
 Settings → Variables and Secrets (Production):
 - `EMERALS_WEBHOOK` — URL webhook Discord per il modulo contatti
 - `ROBLOX_UNIVERSE_ID` — per i giocatori in gioco (opzionale)
+- `SITE_URL` — URL pubblico del sito (es. `https://nome.pages.dev`), per l'anteprima sui social (opzionale)
 
 Ogni push sul branch `main` pubblica in automatico.
 

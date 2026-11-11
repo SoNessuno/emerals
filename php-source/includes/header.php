@@ -13,13 +13,17 @@ $pageDesc  = $pageDesc  ?? 'EMERALS RP: la città roleplay italiana su Roblox. R
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($pageDesc) ?>">
-<meta name="theme-color" content="#04100c">
+<meta name="theme-color" content="#0c0a10">
 <meta name="csrf" content="<?= e($_SESSION['csrf']) ?>">
 <meta property="og:type" content="website">
 <meta property="og:title" content="<?= e($pageTitle) ?>">
 <meta property="og:description" content="<?= e($pageDesc) ?>">
 <meta property="og:locale" content="it_IT">
-<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<?php if (SITE_URL !== ''): ?><meta property="og:image" content="<?= e(rtrim(SITE_URL, '/')) ?>/assets/img/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<?php endif; ?>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,7 +36,7 @@ $pageDesc  = $pageDesc  ?? 'EMERALS RP: la città roleplay italiana su Roblox. R
 <header class="nav" id="nav">
   <div class="wrap nav__in">
     <a class="brand" href="#top" aria-label="<?= e(SITE_NAME) ?> — inizio pagina">
-      <img src="assets/img/logo.svg" width="34" height="34" alt="">
+      <img src="assets/img/logo-mark.png" width="38" height="38" class="mark" alt="">
       <span><?= e(SITE_NAME) ?></span>
     </a>
     <nav class="nav__links" id="navLinks" aria-label="Principale">
