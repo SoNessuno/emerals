@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — EMERALS RP</title>
+<meta name="description" content="EMERALS RP: la città roleplay italiana su Roblox. Reparti, documenti, economia in euro e staff sempre presente.">
+<meta name="theme-color" content="#04100c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404 — EMERALS RP">
+<meta property="og:description" content="EMERALS RP: la città roleplay italiana su Roblox. Reparti, documenti, economia in euro e staff sempre presente.">
+<meta property="og:locale" content="it_IT">
+<link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css?v=1794431801">
+</head>
+<body>
+<a class="skip" href="/#main">Vai al contenuto</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="/#top" aria-label="EMERALS RP — inizio pagina">
+      <img src="/assets/img/logo.svg" width="34" height="34" alt="">
+      <span>EMERALS RP</span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Principale">
+      <a href="/#citta">La città</a>
+      <a href="/#iniziare">Come iniziare</a>
+      <a href="/#carta">Carta d'identità</a>
+      <a href="/#staff">Staff</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#contatti">Contatti</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm" href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Entra nel Discord</a>
+      <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<main id="main" class="nf">
+  <div class="wrap">
+    <p class="mono">ERRORE 404 · FUORI MAPPA</p>
+    <h1>Questa strada non esiste in città.</h1>
+    <p>La pagina che cerchi è stata spostata o non c'è mai stata.</p>
+    <a class="btn btn--primary" href="/">Torna al centro</a>
+  </div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="brand" href="/#top"><img src="/assets/img/logo.svg" width="34" height="34" alt=""><span>EMERALS RP</span></a>
+        <p class="foot__txt">La città roleplay italiana su Roblox. Reparti organizzati, economia in euro e uno staff che risponde.</p>
+      </div>
+      <div>
+        <h4>Esplora</h4>
+        <ul>
+          <li><a href="/#citta">La città</a></li>
+          <li><a href="/#iniziare">Come iniziare</a></li>
+          <li><a href="/#carta">Carta d'identità</a></li>
+          <li><a href="/#staff">Staff</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Aiuto</h4>
+        <ul>
+          <li><a href="/#faq">Domande frequenti</a></li>
+          <li><a href="/#contatti">Scrivici</a></li>
+          <li><a href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Apri un ticket</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Discord ufficiale</a></li>
+          <li><button class="linklike" type="button" id="copyInvite" data-copy="https://discord.gg/RyScfryWxt">Copia invito</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bot">
+      <span>© 2026 EMERALS RP. Tutti i diritti riservati.</span>
+      <span>Progetto di fantasia, non affiliato a Roblox Corporation.</span>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>window.EMERALS = {"districts":{"polizia":{"name":"Polizia","code":"PD","icon":"shield","tag":"Ordine pubblico","text":"Pattuglie, controlli e interventi sul territorio. Ogni arresto e ogni multa vengono registrati e finiscono nello storico del cittadino.","points":["Arresti e multe registrati con un comando","Statistiche per singolo agente","Registro consultabile dallo staff"],"cmds":["/arresto","/multa","/registro_arresti"]},"soccorso":{"name":"Soccorso","code":"SS","icon":"cross","tag":"SSU · SSD","text":"Turni di servizio online e offline con pannelli dedicati: la città sa sempre chi è operativo e chi no.","points":["Pannelli SSU/SSD con stato in tempo reale","Elenco operatori attualmente in servizio","Annunci di apertura e chiusura sessione"],"cmds":["/ssu_online","/ssd_online"]},"istituzioni":{"name":"Istituzioni","code":"IS","icon":"landmark","tag":"Documenti","text":"Cittadinanza, patente e porto d'armi: richiedi tutto da un modulo, lo staff revisiona e i ruoli vengono assegnati automaticamente.","points":["Tre tipi di richiesta con modulo guidato","Revisione dello staff con esito tracciato","Ruolo assegnato in automatico all'approvazione"],"cmds":["/registra","/profilo","/richieste_aperte"]},"imprese":{"name":"Attività","code":"AT","icon":"briefcase","tag":"Imprese","text":"Apri la tua attività e fai crescere un'impresa nella città, con richieste dedicate e supporto dello staff.","points":["Richiesta di fondazione dedicata","Gestione e approvazione dallo staff","Partnership con altre community"],"cmds":["/partnership","/partnership_lista"]},"banca":{"name":"Banca","code":"BK","icon":"coins","tag":"Economia in euro","text":"Portafoglio, conto corrente, bonifici e premio giornaliero. Un'economia vera, con livelli ed esperienza.","points":["Contanti e conto separati","Bonifici tra cittadini","Premio giornaliero, livelli e classifica"],"cmds":["/conto","/bonifico","/daily"]},"supporto":{"name":"Supporto","code":"CS","icon":"headset","tag":"Ticket","text":"Il centro assistenza della città: apri un ticket, vieni preso in carico da un membro dello staff e segui la risoluzione.","points":["Pannello ticket con categorie","Presa in carico tracciata","Statistiche per singolo staff"],"cmds":["/ticket_pannello","/ticket_stats"]},"moderazione":{"name":"Moderazione","code":"MD","icon":"scale","tag":"Regole & sanzioni","text":"Avvisi con escalation, silenziamenti, ban e storico completo. Le regole valgono per tutti, nello stesso modo.","points":["Avvertimenti con escalation automatica","Log di ogni azione rilevante","Sanzioni anche per lo staff"],"cmds":["/warn","/mute","/warnings"]}},"discord":"https://discord.gg/RyScfryWxt","robloxPlace":"","api":{"stats":"api/stats","contact":"api/contact"}};</script>
+<script src="/assets/js/main.js?v=1794431801" defer></script>
+</body>
+</html>

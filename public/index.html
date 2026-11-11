@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMERALS RP — Community Roleplay italiana su Roblox</title>
+<meta name="description" content="EMERALS RP: la città roleplay italiana su Roblox. Reparti, documenti, economia in euro e staff sempre presente.">
+<meta name="theme-color" content="#04100c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EMERALS RP — Community Roleplay italiana su Roblox">
+<meta property="og:description" content="EMERALS RP: la città roleplay italiana su Roblox. Reparti, documenti, economia in euro e staff sempre presente.">
+<meta property="og:locale" content="it_IT">
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=1794431801">
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top" aria-label="EMERALS RP — inizio pagina">
+      <img src="assets/img/logo.svg" width="34" height="34" alt="">
+      <span>EMERALS RP</span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Principale">
+      <a href="#citta">La città</a>
+      <a href="#iniziare">Come iniziare</a>
+      <a href="#carta">Carta d'identità</a>
+      <a href="#staff">Staff</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm" href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Entra nel Discord</a>
+      <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <canvas id="skyline" aria-hidden="true"></canvas>
+  <div class="hero__fade" aria-hidden="true"></div>
+  <div class="wrap hero__in">
+    <div class="hero__copy">
+      <p class="chip"><span class="dot dot--live"></span> Città aperta · Roleplay italiano su Roblox</p>
+      <h1>La città che <span class="grad">non dorme</span>.<br>E ti aspetta.</h1>
+      <p class="lead">EMERALS RP è un roleplay organizzato come una vera città: polizia, soccorso, istituzioni, banca e imprese. Regole chiare, documenti veri, staff che risponde.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Entra nel Discord
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost" href="#citta">Esplora la città</a>
+      </div>
+      <dl class="live" id="live">
+        <div><dt>Membri Discord</dt><dd data-stat="members">—</dd></div>
+        <div><dt>Online ora</dt><dd data-stat="online">—</dd></div>
+        <div hidden data-roblox><dt>In gioco</dt><dd data-stat="playing">—</dd></div>
+        <div><dt>Distretti</dt><dd data-count="7">7</dd></div>
+      </dl>
+    </div>
+
+    <aside class="radio" aria-label="Centrale operativa (simulazione)">
+      <div class="radio__bar">
+        <span class="dot dot--live"></span> CENTRALE OPERATIVA
+        <span class="radio__tag">simulazione</span>
+      </div>
+      <ol class="radio__feed" id="feed" aria-live="off"></ol>
+      <div class="radio__foot mono"><span id="clock">--:--:--</span><span>CANALE 1 · ITALIA</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ VALORI ============ -->
+<section class="band">
+  <div class="wrap band__in">
+    <div class="band__i"><b>Regole uguali per tutti</b><span>Sanzioni con storico e log, anche per lo staff.</span></div>
+    <div class="band__i"><b>Processi digitali</b><span>Ticket, richieste e turni gestiti da un bot dedicato.</span></div>
+    <div class="band__i"><b>Economia in euro</b><span>Portafoglio, conto, bonifici e premio giornaliero.</span></div>
+    <div class="band__i"><b>Staff presente</b><span>Un team con gerarchia chiara e supporto via ticket.</span></div>
+  </div>
+</section>
+
+<!-- ============ CITTÀ / MAPPA ============ -->
+<section class="sec" id="citta">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <p class="eyebrow">La città</p>
+      <h2>Sette distretti. Una sola città.</h2>
+      <p>Seleziona un distretto sulla mappa per scoprire cosa si fa, come funziona e quali comandi usa lo staff.</p>
+    </header>
+
+    <div class="city reveal">
+      <div class="city__map">
+        <svg viewBox="0 0 760 420" role="group" aria-label="Mappa interattiva della città" id="cityMap">
+          <defs>
+            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="currentColor" stroke-opacity=".06"/></pattern>
+          </defs>
+          <rect width="760" height="420" fill="url(#grid)"/>
+          <!-- strade -->
+          <g class="road">
+            <rect x="0" y="180" width="760" height="50"/>
+            <rect x="250" y="0" width="20" height="180"/><rect x="490" y="0" width="20" height="180"/>
+            <rect x="190" y="230" width="20" height="150"/><rect x="370" y="230" width="20" height="150"/><rect x="550" y="230" width="20" height="150"/>
+          </g>
+          <path class="lane" d="M0 205H760"/>
+          <!-- fiume -->
+          <path class="river" d="M0 398C90 382 160 412 260 398S430 382 520 398 680 412 760 394V420H0Z"/>
+          <!-- auto -->
+          <circle r="4" class="car car--a"><animateMotion dur="14s" repeatCount="indefinite" path="M-10 195H770"/></circle>
+          <circle r="4" class="car car--b"><animateMotion dur="19s" repeatCount="indefinite" path="M770 215H-10"/></circle>
+          <circle r="4" class="car car--c"><animateMotion dur="11s" repeatCount="indefinite" path="M260 -10V190"/></circle>
+          <circle r="4" class="car car--a"><animateMotion dur="16s" repeatCount="indefinite" path="M500 190V-10"/></circle>
+
+                    <g class="dist" data-d="polizia" tabindex="0" role="button" aria-label="Polizia" transform="translate(30 30)">
+            <rect class="dist__bg" width="220" height="150" rx="14"/>
+            <g class="dist__bld" aria-hidden="true">
+              <rect x="14" y="77" width="18" height="59" rx="3"/><rect x="40" y="94" width="18" height="42" rx="3"/><rect x="66" y="101" width="18" height="35" rx="3"/><rect x="92" y="112" width="18" height="24" rx="3"/><rect x="118" y="101" width="18" height="35" rx="3"/><rect x="144" y="78" width="18" height="58" rx="3"/><rect x="170" y="105" width="18" height="31" rx="3"/>            </g>
+            <text class="dist__code" x="16" y="30">PD</text>
+            <text class="dist__name" x="16" y="52">Polizia</text>
+          </g>
+                    <g class="dist" data-d="soccorso" tabindex="0" role="button" aria-label="Soccorso" transform="translate(270 30)">
+            <rect class="dist__bg" width="220" height="150" rx="14"/>
+            <g class="dist__bld" aria-hidden="true">
+              <rect x="14" y="85" width="18" height="51" rx="3"/><rect x="40" y="100" width="18" height="36" rx="3"/><rect x="66" y="104" width="18" height="32" rx="3"/><rect x="92" y="76" width="18" height="60" rx="3"/><rect x="118" y="96" width="18" height="40" rx="3"/><rect x="144" y="81" width="18" height="55" rx="3"/><rect x="170" y="104" width="18" height="32" rx="3"/>            </g>
+            <text class="dist__code" x="16" y="30">SS</text>
+            <text class="dist__name" x="16" y="52">Soccorso</text>
+          </g>
+                    <g class="dist" data-d="istituzioni" tabindex="0" role="button" aria-label="Istituzioni" transform="translate(510 30)">
+            <rect class="dist__bg" width="220" height="150" rx="14"/>
+            <g class="dist__bld" aria-hidden="true">
+              <rect x="14" y="82" width="18" height="54" rx="3"/><rect x="40" y="79" width="18" height="57" rx="3"/><rect x="66" y="91" width="18" height="45" rx="3"/><rect x="92" y="99" width="18" height="37" rx="3"/><rect x="118" y="102" width="18" height="34" rx="3"/><rect x="144" y="94" width="18" height="42" rx="3"/><rect x="170" y="81" width="18" height="55" rx="3"/>            </g>
+            <text class="dist__code" x="16" y="30">IS</text>
+            <text class="dist__name" x="16" y="52">Istituzioni</text>
+          </g>
+                    <g class="dist" data-d="imprese" tabindex="0" role="button" aria-label="Attività" transform="translate(30 230)">
+            <rect class="dist__bg" width="160" height="150" rx="14"/>
+            <g class="dist__bld" aria-hidden="true">
+              <rect x="14" y="83" width="18" height="53" rx="3"/><rect x="40" y="84" width="18" height="52" rx="3"/><rect x="66" y="75" width="18" height="61" rx="3"/><rect x="92" y="109" width="18" height="27" rx="3"/><rect x="118" y="90" width="18" height="46" rx="3"/>            </g>
+            <text class="dist__code" x="16" y="30">AT</text>
+            <text class="dist__name" x="16" y="52">Attività</text>
+          </g>
+                    <g class="dist" data-d="banca" tabindex="0" role="button" aria-label="Banca" transform="translate(210 230)">
+            <rect class="dist__bg" width="160" height="150" rx="14"/>
+            <g class="dist__bld" aria-hidden="true">
+              <rect x="14" y="105" width="18" height="31" rx="3"/><rect x="40" y="75" width="18" height="61" rx="3"/><rect x="66" y="98" width="18" height="38" rx="3"/><rect x="92" y="78" width="18" height="58" rx="3"/><rect x="118" y="80" width="18" height="56" rx="3"/>            </g>
+            <text class="dist__code" x="16" y="30">BK</text>
+            <text class="dist__name" x="16" y="52">Banca</text>
+          </g>
+                    <g class="dist" data-d="supporto" tabindex="0" role="button" aria-label="Supporto" transform="translate(390 230)">
+            <rect class="dist__bg" width="160" height="150" rx="14"/>
+            <g class="dist__bld" aria-hidden="true">
+              <rect x="14" y="91" width="18" height="45" rx="3"/><rect x="40" y="109" width="18" height="27" rx="3"/><rect x="66" y="95" width="18" height="41" rx="3"/><rect x="92" y="86" width="18" height="50" rx="3"/><rect x="118" y="76" width="18" height="60" rx="3"/>            </g>
+            <text class="dist__code" x="16" y="30">CS</text>
+            <text class="dist__name" x="16" y="52">Supporto</text>
+          </g>
+                    <g class="dist" data-d="moderazione" tabindex="0" role="button" aria-label="Moderazione" transform="translate(570 230)">
+            <rect class="dist__bg" width="160" height="150" rx="14"/>
+            <g class="dist__bld" aria-hidden="true">
+              <rect x="14" y="87" width="18" height="49" rx="3"/><rect x="40" y="93" width="18" height="43" rx="3"/><rect x="66" y="85" width="18" height="51" rx="3"/><rect x="92" y="83" width="18" height="53" rx="3"/><rect x="118" y="94" width="18" height="42" rx="3"/>            </g>
+            <text class="dist__code" x="16" y="30">MD</text>
+            <text class="dist__name" x="16" y="52">Moderazione</text>
+          </g>
+                  </svg>
+        <p class="city__hint mono"><span class="dot"></span> Clicca o usa Tab + Invio sui distretti</p>
+      </div>
+
+      <article class="panel" id="panel" aria-live="polite">
+        <div class="panel__top">
+          <span class="panel__ico" id="pIcon"></span>
+          <div><p class="mono panel__tag" id="pTag"></p><h3 id="pName"></h3></div>
+        </div>
+        <p class="panel__txt" id="pText"></p>
+        <ul class="panel__list" id="pPoints"></ul>
+        <p class="panel__cmdt mono">Comandi del bot</p>
+        <div class="panel__cmds" id="pCmds"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COME INIZIARE ============ -->
+<section class="sec sec--alt" id="iniziare">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <p class="eyebrow">Il percorso</p>
+      <h2>Da nuovo arrivato a cittadino in quattro passi.</h2>
+    </header>
+    <ol class="path">
+            <li class="path__i reveal">
+        <span class="path__n">01</span>
+        <h3>Entra nel Discord</h3>
+        <p>Unisciti al server ufficiale e leggi il regolamento prima di tutto.</p>
+      </li>
+            <li class="path__i reveal">
+        <span class="path__n">02</span>
+        <h3>Collega Roblox</h3>
+        <p>Con /registra colleghi il tuo account Roblox al profilo Discord.</p>
+      </li>
+            <li class="path__i reveal">
+        <span class="path__n">03</span>
+        <h3>Ottieni i documenti</h3>
+        <p>Cittadinanza, patente e porto d&#039;armi: li chiedi con un modulo e li ritiri dallo staff.</p>
+      </li>
+            <li class="path__i reveal">
+        <span class="path__n">04</span>
+        <h3>Scegli il tuo ruolo</h3>
+        <p>Lavora in un reparto, apri un&#039;attività o vivi la città da cittadino.</p>
+      </li>
+          </ol>
+    <div class="center reveal"><a class="btn btn--primary" href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Inizia dal Discord</a></div>
+  </div>
+</section>
+
+<!-- ============ CARTA D'IDENTITÀ ============ -->
+<section class="sec" id="carta">
+  <div class="wrap idc">
+    <div class="idc__copy reveal">
+      <p class="eyebrow">Anteprima</p>
+      <h2>Crea la tua carta d'identità RP.</h2>
+      <p>Prova il tuo personaggio prima ancora di entrare. Inserisci i dati, guarda la carta prendere forma e scaricala. Poi, nel Discord, usi gli stessi dati per la richiesta di cittadinanza.</p>
+      <form class="form idc__form" id="idForm" autocomplete="off">
+        <label>Nome RP<input name="nome" maxlength="18" value="Marco" required></label>
+        <label>Cognome RP<input name="cognome" maxlength="18" value="Rossi" required></label>
+        <label>Data di nascita<input name="nascita" type="date" value="1998-05-14" required></label>
+        <label>Nazione<input name="nazione" maxlength="20" value="Italia" required></label>
+        <label class="full">Username Roblox<input name="roblox" maxlength="20" value="MarcoRossi_RP" required></label>
+      </form>
+      <div class="idc__btns">
+        <button class="btn btn--primary" type="button" id="idDownload">Scarica la carta (PNG)</button>
+        <button class="btn btn--ghost" type="button" id="idCopy">Copia i dati per la richiesta</button>
+      </div>
+      <p class="fine">Documento di fantasia, valido solo all'interno del roleplay. Nessun dato viene inviato o salvato: tutto resta sul tuo dispositivo.</p>
+    </div>
+    <div class="idc__view reveal">
+      <canvas id="idCanvas" width="856" height="540" aria-label="Anteprima della carta d'identità RP"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAFF ============ -->
+<section class="sec sec--alt" id="staff">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <p class="eyebrow">Chi gestisce la città</p>
+      <h2>Una gerarchia chiara, dall'alto al basso.</h2>
+      <p>Ogni grado ha compiti e responsabilità definiti. Le promozioni e le retrocessioni vengono annunciate e registrate.</p>
+    </header>
+    <div class="ranks">
+            <div class="rank reveal" style="--w: 100%">
+        <p class="rank__g mono">Direzione</p>
+        <div class="rank__r">
+          <span>Fondatore del Progetto</span><span>Fondatore Generale</span><span>Founder</span><span>Co-Founder</span><span>CEO</span><span>CO-CEO</span>        </div>
+      </div>
+            <div class="rank reveal" style="--w: 91%">
+        <p class="rank__g mono">Gestione</p>
+        <div class="rank__r">
+          <span>Community Manager</span><span>Coordinatore Staff</span>        </div>
+      </div>
+            <div class="rank reveal" style="--w: 82%">
+        <p class="rank__g mono">Moderazione</p>
+        <div class="rank__r">
+          <span>Capo Moderazione</span><span>Major Moderatore</span><span>Senior Moderatore</span><span>Moderatore Junior</span>        </div>
+      </div>
+            <div class="rank reveal" style="--w: 73%">
+        <p class="rank__g mono">Supervisione</p>
+        <div class="rank__r">
+          <span>Head Supervisore</span><span>Senior Supervisore</span><span>Junior Supervisore</span>        </div>
+      </div>
+            <div class="rank reveal" style="--w: 64%">
+        <p class="rank__g mono">Supporto</p>
+        <div class="rank__r">
+          <span>Head Helper</span><span>Major Helper</span><span>Senior Helper</span><span>Helper</span>        </div>
+      </div>
+          </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq">
+  <div class="wrap wrap--narrow">
+    <header class="sec__head reveal">
+      <p class="eyebrow">FAQ</p>
+      <h2>Le domande che ci fanno più spesso.</h2>
+    </header>
+    <div class="faq reveal">
+            <details>
+        <summary>È gratis?</summary>
+        <p>Sì. Entrare nella community e giocare non costa nulla.</p>
+      </details>
+            <details>
+        <summary>Serve un account Roblox?</summary>
+        <p>Sì, ti serve un account Roblox. Dopo l&#039;ingresso nel Discord lo colleghi al tuo profilo con il comando /registra.</p>
+      </details>
+            <details>
+        <summary>Come ottengo cittadinanza, patente e porto d&#039;armi?</summary>
+        <p>Dal Discord compili il modulo di richiesta. Lo staff lo revisiona e, se approvato, il ruolo ti viene assegnato automaticamente.</p>
+      </details>
+            <details>
+        <summary>Come funziona l&#039;economia?</summary>
+        <p>Hai un portafoglio e un conto in euro: puoi depositare, prelevare, fare bonifici, riscuotere il premio giornaliero e salire di livello.</p>
+      </details>
+            <details>
+        <summary>Come entro nello staff o in un reparto?</summary>
+        <p>Controlla gli annunci nel Discord: le candidature si aprono quando servono nuove persone. Intanto, partecipa e fatti conoscere.</p>
+      </details>
+            <details>
+        <summary>Ho un problema o voglio segnalare qualcuno.</summary>
+        <p>Apri un ticket dal pannello nel Discord. Lo staff lo prende in carico e ti aggiorna nel ticket stesso.</p>
+      </details>
+          </div>
+  </div>
+</section>
+
+<!-- ============ CONTATTI ============ -->
+<section class="sec sec--alt" id="contatti">
+  <div class="wrap contact">
+    <div class="contact__copy reveal">
+      <p class="eyebrow">Contatti</p>
+      <h2>Hai una domanda o una proposta?</h2>
+      <p>Per assistenza immediata il canale migliore è un ticket nel Discord. Per partnership, candidature e informazioni puoi scriverci anche da qui.</p>
+      <a class="btn btn--ghost" href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Apri un ticket nel Discord</a>
+    </div>
+    <form class="form contact__form reveal" id="contactForm" novalidate>
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label>Nome<input name="name" maxlength="40" required></label>
+      <label>Username Discord<input name="discord" maxlength="40" required placeholder="es. utente"></label>
+      <label class="full">Argomento
+        <select name="topic" required>
+          <option value="info">Informazioni</option>
+          <option value="partnership">Partnership</option>
+          <option value="staff">Candidatura staff</option>
+          <option value="altro">Altro</option>
+        </select>
+      </label>
+      <label class="full">Messaggio<textarea name="message" rows="5" maxlength="1000" required></textarea></label>
+      <div class="full form__foot">
+        <button class="btn btn--primary" type="submit" id="cSend">Invia messaggio</button>
+        <p class="form__msg" id="cMsg" role="status"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="wrap cta__in reveal">
+    <div>
+      <h2>Pronto a entrare in città?</h2>
+      <p>Unisciti alla community e scegli chi vuoi essere.</p>
+    </div>
+    <a class="btn btn--light" href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Entra nel Discord</a>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="brand" href="#top"><img src="assets/img/logo.svg" width="34" height="34" alt=""><span>EMERALS RP</span></a>
+        <p class="foot__txt">La città roleplay italiana su Roblox. Reparti organizzati, economia in euro e uno staff che risponde.</p>
+      </div>
+      <div>
+        <h4>Esplora</h4>
+        <ul>
+          <li><a href="#citta">La città</a></li>
+          <li><a href="#iniziare">Come iniziare</a></li>
+          <li><a href="#carta">Carta d'identità</a></li>
+          <li><a href="#staff">Staff</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Aiuto</h4>
+        <ul>
+          <li><a href="#faq">Domande frequenti</a></li>
+          <li><a href="#contatti">Scrivici</a></li>
+          <li><a href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Apri un ticket</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="https://discord.gg/RyScfryWxt" target="_blank" rel="noopener">Discord ufficiale</a></li>
+          <li><button class="linklike" type="button" id="copyInvite" data-copy="https://discord.gg/RyScfryWxt">Copia invito</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bot">
+      <span>© 2026 EMERALS RP. Tutti i diritti riservati.</span>
+      <span>Progetto di fantasia, non affiliato a Roblox Corporation.</span>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>window.EMERALS = {"districts":{"polizia":{"name":"Polizia","code":"PD","icon":"shield","tag":"Ordine pubblico","text":"Pattuglie, controlli e interventi sul territorio. Ogni arresto e ogni multa vengono registrati e finiscono nello storico del cittadino.","points":["Arresti e multe registrati con un comando","Statistiche per singolo agente","Registro consultabile dallo staff"],"cmds":["/arresto","/multa","/registro_arresti"]},"soccorso":{"name":"Soccorso","code":"SS","icon":"cross","tag":"SSU · SSD","text":"Turni di servizio online e offline con pannelli dedicati: la città sa sempre chi è operativo e chi no.","points":["Pannelli SSU/SSD con stato in tempo reale","Elenco operatori attualmente in servizio","Annunci di apertura e chiusura sessione"],"cmds":["/ssu_online","/ssd_online"]},"istituzioni":{"name":"Istituzioni","code":"IS","icon":"landmark","tag":"Documenti","text":"Cittadinanza, patente e porto d'armi: richiedi tutto da un modulo, lo staff revisiona e i ruoli vengono assegnati automaticamente.","points":["Tre tipi di richiesta con modulo guidato","Revisione dello staff con esito tracciato","Ruolo assegnato in automatico all'approvazione"],"cmds":["/registra","/profilo","/richieste_aperte"]},"imprese":{"name":"Attività","code":"AT","icon":"briefcase","tag":"Imprese","text":"Apri la tua attività e fai crescere un'impresa nella città, con richieste dedicate e supporto dello staff.","points":["Richiesta di fondazione dedicata","Gestione e approvazione dallo staff","Partnership con altre community"],"cmds":["/partnership","/partnership_lista"]},"banca":{"name":"Banca","code":"BK","icon":"coins","tag":"Economia in euro","text":"Portafoglio, conto corrente, bonifici e premio giornaliero. Un'economia vera, con livelli ed esperienza.","points":["Contanti e conto separati","Bonifici tra cittadini","Premio giornaliero, livelli e classifica"],"cmds":["/conto","/bonifico","/daily"]},"supporto":{"name":"Supporto","code":"CS","icon":"headset","tag":"Ticket","text":"Il centro assistenza della città: apri un ticket, vieni preso in carico da un membro dello staff e segui la risoluzione.","points":["Pannello ticket con categorie","Presa in carico tracciata","Statistiche per singolo staff"],"cmds":["/ticket_pannello","/ticket_stats"]},"moderazione":{"name":"Moderazione","code":"MD","icon":"scale","tag":"Regole & sanzioni","text":"Avvisi con escalation, silenziamenti, ban e storico completo. Le regole valgono per tutti, nello stesso modo.","points":["Avvertimenti con escalation automatica","Log di ogni azione rilevante","Sanzioni anche per lo staff"],"cmds":["/warn","/mute","/warnings"]}},"discord":"https://discord.gg/RyScfryWxt","robloxPlace":"","api":{"stats":"api/stats","contact":"api/contact"}};</script>
+<script src="assets/js/main.js?v=1794431801" defer></script>
+</body>
+</html>
