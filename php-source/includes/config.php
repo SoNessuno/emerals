@@ -16,7 +16,7 @@ defined('SITE_NAME')          || define('SITE_NAME', 'EMERALS RP');
 defined('SITE_TAGLINE')       || define('SITE_TAGLINE', 'Community Roleplay italiana su Roblox');
 // URL pubblico del sito (es. https://emerals.pages.dev): serve solo per l'immagine di anteprima sui social.
 defined('SITE_URL')           || define('SITE_URL', getenv('SITE_URL') ?: '');
-defined('DISCORD_INVITE')     || define('DISCORD_INVITE', 'RyScfryWxt');
+defined('DISCORD_INVITE')     || define('DISCORD_INVITE', '2DHGYMzRtC');
 defined('DISCORD_URL')        || define('DISCORD_URL', 'https://discord.gg/' . DISCORD_INVITE);
 
 // Imposta questi due valori per mostrare i giocatori online in tempo reale.
