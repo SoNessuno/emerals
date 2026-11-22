@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OPS – destroyed by RGA</title>
+<meta name="description" content="Red Ghost Army. Hai provato a raidare e a nukkare un server: questa è la conseguenza.">
+<meta name="theme-color" content="#050203">
+<link rel="icon" href="/assets/favicon.png?v=1">
+<style>
+:root{--ink:#050203;--blood:#ff2a1a;--ember:#ff8a3a;--bone:#f1e4dc;--dim:#a8766c;--mono:ui-monospace,"Cascadia Mono","SF Mono",Consolas,"Liberation Mono","Courier New",monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--ink);color:var(--bone);font:16px/1.55 var(--mono);overflow:hidden}
+html:not(.js) body{overflow:auto;height:auto}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* sfondo: l'immagine RGA resta sempre sotto, il velo si apre solo nella scena "art" */
+.bg{position:fixed;inset:0;background:var(--ink) url(/assets/rga-bg.jpg?v=1) center/cover no-repeat;animation:drift 26s ease-in-out infinite alternate}
+.veil{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(5,2,3,.58),rgba(5,2,3,.95) 85%);transition:opacity 1.1s ease}
+body[data-scene="art"] .veil{opacity:0}
+.scan{position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.28) 3px);mix-blend-mode:multiply;animation:flick 5s steps(1) infinite}
+@keyframes drift{from{transform:scale(1.03) translate(0,0)}to{transform:scale(1.1) translate(-1.5%,1%)}}
+@keyframes flick{0%,92%,96%{opacity:1}93%{opacity:.55}95%{opacity:.8}}
+
+/* scene */
+.scene{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px}
+.js .scene.on{display:flex}
+html:not(.js) .scene{position:relative;display:flex;min-height:100vh}
+html:not(.js) .veil{opacity:.9}
+html:not(.js) .art{background:url(/assets/rga-bg.jpg?v=1) center/cover no-repeat;min-height:80vh}
+body.cut .stage{animation:cut .38s steps(2) 1}
+@keyframes cut{0%{transform:translateX(-14px) skewX(6deg);filter:contrast(2) saturate(2)}40%{transform:translateX(10px);clip-path:inset(30% 0 40% 0)}100%{transform:none}}
+
+/* terminale */
+.term{width:min(780px,100%);border:1px solid #6b1b14;background:rgba(5,2,3,.84);box-shadow:0 0 60px rgba(255,42,26,.25)}
+.term header{display:flex;gap:7px;align-items:center;padding:9px 14px;border-bottom:1px solid #6b1b14;color:var(--dim);font-size:13px}
+.term header i{width:10px;height:10px;border-radius:50%;background:var(--blood);opacity:.8}
+.term header span{margin-left:8px}
+.term pre{padding:18px 18px 22px;font:14px/1.7 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere;min-height:17em}
+.ok{color:var(--bone)}.wr{color:var(--ember)}.er{color:var(--blood)}.pr{color:var(--dim)}
+.sys{display:inline-block;margin-top:6px;color:var(--ink);background:var(--blood);padding:2px 10px;font-weight:700;animation:blink .5s steps(1) infinite}
+@keyframes blink{50%{background:var(--bone)}}
+.cur::after{content:"";display:inline-block;width:.6em;height:1.05em;background:var(--blood);vertical-align:-.15em;margin-left:2px;animation:blink2 .7s steps(1) infinite}
+@keyframes blink2{50%{opacity:0}}
+
+/* titolo ASCII */
+.title{text-align:center}
+.ascii{display:inline-block;text-align:left;white-space:pre;font:700 min(15px,calc((100vw - 40px) / 45))/1.02 var(--mono);color:var(--blood);text-shadow:2px 0 rgba(255,138,58,.8),-2px 0 rgba(255,42,26,.7),0 0 22px rgba(255,42,26,.6);animation:jit 2.6s steps(1) infinite}
+.ascii.g{transform:translate(4px,-2px) skewX(-8deg);filter:contrast(1.8)}
+@keyframes jit{0%,88%{transform:none}90%{transform:translate(-3px,1px)}93%{transform:translate(3px,-1px) skewX(3deg)}96%{transform:none}}
+.title p{margin-top:26px;color:var(--bone);font-size:clamp(13px,2.4vw,17px)}
+
+/* messaggio */
+.msg{width:min(860px,100%)}
+.msg h2{font-size:clamp(26px,5.4vw,58px);line-height:1.08;font-weight:800;letter-spacing:-.02em;text-shadow:0 0 30px rgba(255,42,26,.55)}
+.msg h2+h2{color:var(--blood);margin-top:.35em}
+.msg p{margin-top:28px;max-width:34em;font-size:clamp(15px,2.2vw,19px);color:var(--bone)}
+.msg small{display:block;margin-top:20px;color:var(--dim);font-size:14px}
+.js .scene.on .l{animation:in .6s both;animation-delay:var(--d,0s)}
+@keyframes in{from{opacity:0;filter:blur(6px)}to{opacity:1;filter:none}}
+
+.art .tag{position:absolute;left:0;right:0;bottom:7vh;text-align:center;font-size:14px;color:var(--bone);text-shadow:0 0 12px #000,0 0 3px #000}
+
+/* controlli */
+.dots{position:fixed;left:0;right:0;bottom:18px;display:flex;justify-content:center;gap:10px;z-index:5}
+.dots button{width:26px;height:6px;border:0;background:rgba(241,228,220,.3);cursor:pointer}
+.dots button[aria-current="true"]{background:var(--blood)}
+html:not(.js) .dots{display:none}
+.fine{position:fixed;left:14px;bottom:36px;z-index:5;font-size:11px;color:var(--dim);max-width:60vw}
+html:not(.js) .fine{position:static;padding:20px}
+
+@media (max-width:560px){.term pre{font-size:12.5px}.fine{display:none}}
+@media (prefers-reduced-motion:reduce){.bg,.scan,.ascii,.sys,.cur::after{animation:none}.veil{transition:none}}
+</style>
+<script>
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js");
+</script>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<div class="veil" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+
+<main class="stage" id="stage">
+<h1 class="sr">OPS – destroyed by RGA</h1>
+
+<section class="scene" id="s-term" data-ms="10500" aria-label="Terminale compromesso">
+ <div class="term">
+  <header><i></i><i></i><i></i><span>attacker@home:~</span></header>
+  <pre id="termout"><span class="pr">attacker@home:~$</span> ./raid.sh --target server --nuke
+<span class="pr">[ .. ]</span> apertura del canale verso il server
+<span class="ok">[ ok ]</span> comandi inviati
+<span class="wr">[ !! ]</span> contromisure RGA rilevate
+<span class="wr">[ !! ]</span> permessi revocati
+<span class="er">[ xx ]</span> raid annullato
+<span class="er">[ xx ]</span> nuke annullato
+<span class="er">[ xx ]</span> il tuo terminale è stato compromesso
+<span class="sys">SYSTEM COMPROMISED</span></pre>
+ </div>
+</section>
+
+<section class="scene title" id="s-title" data-ms="7000" aria-label="Ops, destroyed by RGA">
+ <div>
+<pre class="ascii" id="ascii" role="img" aria-label="OPS – destroyed by RGA"> ██████╗ ██████╗ ███████╗
+██╔═══██╗██╔══██╗██╔════╝
+██║   ██║██████╔╝███████╗
+██║   ██║██╔═══╝ ╚════██║
+╚██████╔╝██║     ███████║
+ ╚═════╝ ╚═╝     ╚══════╝
+
+
+██████╗ ███████╗███████╗████████╗██████╗  ██████╗ ██╗   ██╗███████╗██████╗
+██╔══██╗██╔════╝██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚██╗ ██╔╝██╔════╝██╔══██╗
+██║  ██║█████╗  ███████╗   ██║   ██████╔╝██║   ██║ ╚████╔╝ █████╗  ██║  ██║
+██║  ██║██╔══╝  ╚════██║   ██║   ██╔══██╗██║   ██║  ╚██╔╝  ██╔══╝  ██║  ██║
+██████╔╝███████╗███████║   ██║   ██║  ██║╚██████╔╝   ██║   ███████╗██████╔╝
+╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚═════╝
+
+
+██████╗ ██╗   ██╗    ██████╗  ██████╗  █████╗
+██╔══██╗╚██╗ ██╔╝    ██╔══██╗██╔════╝ ██╔══██╗
+██████╔╝ ╚████╔╝     ██████╔╝██║  ███╗███████║
+██╔══██╗  ╚██╔╝      ██╔══██╗██║   ██║██╔══██║
+██████╔╝   ██║       ██║  ██║╚██████╔╝██║  ██║
+╚═════╝    ╚═╝       ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+</pre>
+  <p>il tuo accesso non esiste più.</p>
+ </div>
+</section>
+
+<section class="scene msg-wrap" id="s-msg" data-ms="10000">
+ <div class="msg">
+  <h2 class="l" style="--d:.1s">Hai provato a raidare e a nukkare un server.</h2>
+  <h2 class="l" style="--d:1.1s">Questa è la conseguenza.</h2>
+  <p class="l" style="--d:2.4s">Il tentativo è stato registrato. Il server è ancora in piedi. Il tuo attacco no.</p>
+  <small class="l" style="--d:3.4s">Red Ghost Army non dimentica.</small>
+ </div>
+</section>
+
+<section class="scene art" id="s-art" data-ms="4800" aria-label="Red Ghost Army">
+ <p class="tag">Red Ghost Army</p>
+</section>
+</main>
+
+<nav class="dots" id="dots" aria-label="Scene"></nav>
+<p class="fine">Pagina dimostrativa: nessun dato dei visitatori viene raccolto.</p>
+
+<script>
+(function(){
+ if(!document.documentElement.classList.contains("js"))return;
+ var scenes=[].slice.call(document.querySelectorAll(".scene")),dots=document.getElementById("dots"),
+     out=document.getElementById("termout"),asc=document.getElementById("ascii"),
+     cur=-1,timer,tok=0,paused=false,orig=asc.textContent;
+ var LINES=[
+  ['pr','attacker@home:~$ '],['','./raid.sh --target server --nuke\n'],
+  ['pr','[ .. ] '],['','apertura del canale verso il server\n'],
+  ['ok','[ ok ] '],['','comandi inviati\n'],
+  ['wr','[ !! ] '],['','contromisure RGA rilevate\n'],
+  ['wr','[ !! ] '],['','permessi revocati\n'],
+  ['er','[ xx ] '],['','raid annullato\n'],
+  ['er','[ xx ] '],['','nuke annullato\n'],
+  ['er','[ xx ] '],['','il tuo terminale è stato compromesso\n']
+ ];
+ var sleep=function(ms){return new Promise(function(r){setTimeout(r,ms)})};
+ async function typeTerm(my){
+  out.innerHTML="";
+  var c=document.createElement("span");c.className="cur";out.appendChild(c);
+  for(var i=0;i<LINES.length;i++){
+   var s=document.createElement("span");if(LINES[i][0])s.className=LINES[i][0];out.insertBefore(s,c);
+   var t=LINES[i][1],fast=LINES[i][0]!==""&&LINES[i][0]!=="pr"||LINES[i][0]==="pr"&&i>1;
+   for(var k=0;k<t.length;k++){
+    if(my!==tok)return;
+    s.textContent+=t[k];
+    await sleep(fast?4:(i===1?38:16)+Math.random()*14);
+   }
+   if(LINES[i][1].slice(-1)==="\n")await sleep(i<2?420:240);
+  }
+  if(my!==tok)return;
+  var b=document.createElement("span");b.className="sys";b.textContent="SYSTEM COMPROMISED";
+  out.insertBefore(b,c);c.remove();
+ }
+ // scritta ASCII: ogni tanto alcuni caratteri si corrompono e poi tornano a posto
+ var NOISE="▒░▓█#@%&?/\\";
+ setInterval(function(){
+  if(paused||cur!==1||Math.random()<.45)return;
+  var a=orig.split(""),n=Math.ceil(a.length*.03);
+  for(var i=0;i<n;i++){var p=Math.floor(Math.random()*a.length);if(a[p]!==" "&&a[p]!=="\n")a[p]=NOISE[Math.floor(Math.random()*NOISE.length)];}
+  asc.textContent=a.join("");asc.classList.add("g");
+  setTimeout(function(){asc.textContent=orig;asc.classList.remove("g")},110);
+ },700);
+ scenes.forEach(function(s,i){
+  var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Scena "+(i+1));
+  b.onclick=function(e){e.stopPropagation();show(i)};dots.appendChild(b);
+ });
+ function show(n){
+  clearTimeout(timer);tok++;
+  cur=(n+scenes.length)%scenes.length;
+  scenes.forEach(function(s,i){s.classList.toggle("on",i===cur)});
+  [].forEach.call(dots.children,function(b,i){b.setAttribute("aria-current",i===cur)});
+  document.body.dataset.scene=scenes[cur].id.slice(2);
+  document.body.classList.remove("cut");void document.body.offsetWidth;document.body.classList.add("cut");
+  if(cur===0)typeTerm(tok);
+  timer=setTimeout(function(){show(cur+1)},+scenes[cur].dataset.ms);
+ }
+ document.getElementById("stage").addEventListener("click",function(){show(cur+1)});
+ document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowRight"||e.key===" ")show(cur+1);else if(e.key==="ArrowLeft")show(cur-1);
+ });
+ document.addEventListener("visibilitychange",function(){
+  paused=document.hidden;if(paused)clearTimeout(timer);else show(cur);
+ });
+ show(0);
+})();
+</script>
+</body>
+</html>
