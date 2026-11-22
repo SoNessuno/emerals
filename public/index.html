@@ -68,10 +68,8 @@ body.cut .stage{animation:cut .38s steps(2) 1}
 .dots button{width:26px;height:6px;border:0;background:rgba(241,228,220,.3);cursor:pointer}
 .dots button[aria-current="true"]{background:var(--blood)}
 html:not(.js) .dots{display:none}
-.fine{position:fixed;left:14px;bottom:36px;z-index:5;font-size:11px;color:var(--dim);max-width:60vw}
-html:not(.js) .fine{position:static;padding:20px}
 
-@media (max-width:560px){.term pre{font-size:12.5px}.fine{display:none}}
+@media (max-width:560px){.term pre{font-size:12.5px}}
 @media (prefers-reduced-motion:reduce){.bg,.scan,.ascii,.sys,.cur::after{animation:none}.veil{transition:none}}
 </style>
 <script>
@@ -145,7 +143,6 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElem
 </main>
 
 <nav class="dots" id="dots" aria-label="Scene"></nav>
-<p class="fine">Pagina dimostrativa: nessun dato dei visitatori viene raccolto.</p>
 
 <script>
 (function(){
