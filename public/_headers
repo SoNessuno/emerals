@@ -5,3 +5,5 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 /assets/*
   Cache-Control: public, max-age=2592000
+/registro.json
+  Cache-Control: no-store

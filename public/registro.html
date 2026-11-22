@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registro – Red Ghost Army</title>
+<meta name="description" content="Il registro di Red Ghost Army: tutto viene registrato, tutto viene ricordato.">
+<meta name="theme-color" content="#050203">
+<link rel="icon" href="/assets/favicon.png?v=2">
+<style>
+:root{--ink:#050203;--blood:#ff2a1a;--ember:#ff8a3a;--bone:#f1e4dc;--dim:#a8766c;--mono:ui-monospace,"Cascadia Mono","SF Mono",Consolas,"Liberation Mono","Courier New",monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--bone);font:16px/1.55 var(--mono);min-height:100%}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+.bg{position:fixed;inset:0;background:var(--ink) url(/assets/rga-bg.jpg?v=1) center/cover no-repeat;animation:drift 26s ease-in-out infinite alternate}
+.veil{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(5,2,3,.72),rgba(5,2,3,.96) 90%)}
+.scan{position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.28) 3px);mix-blend-mode:multiply;animation:flick 5s steps(1) infinite}
+@keyframes drift{from{transform:scale(1.03)}to{transform:scale(1.1) translate(-1.5%,1%)}}
+@keyframes flick{0%,92%,96%{opacity:1}93%{opacity:.55}95%{opacity:.8}}
+.nav{position:fixed;top:14px;right:16px;z-index:6;display:flex;gap:10px;font-size:13px}
+.nav a{color:var(--bone);text-decoration:none;border:1px solid #6b1b14;background:rgba(5,2,3,.8);padding:7px 13px;transition:background .2s,color .2s}
+.nav a:hover{background:var(--blood);border-color:var(--blood);color:var(--ink)}
+.wrap{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:84px 20px 70px}
+h1{font-size:clamp(40px,9vw,92px);line-height:1;font-weight:800;letter-spacing:-.03em;text-shadow:2px 0 rgba(255,138,58,.8),-2px 0 rgba(255,42,26,.7),0 0 30px rgba(255,42,26,.55);animation:jit 3s steps(1) infinite}
+@keyframes jit{0%,90%{transform:none}92%{transform:translate(-4px,1px) skewX(-4deg)}95%{transform:translate(3px,-1px)}98%{transform:none}}
+.lead{margin-top:16px;color:var(--bone);max-width:34em}
+.term{margin-top:34px;border:1px solid #6b1b14;background:rgba(5,2,3,.86);box-shadow:0 0 50px rgba(255,42,26,.2)}
+.term header{display:flex;gap:7px;align-items:center;padding:9px 14px;border-bottom:1px solid #6b1b14;color:var(--dim);font-size:13px}
+.term header i{width:10px;height:10px;border-radius:50%;background:var(--blood);opacity:.8}
+.term header span{margin-left:8px}
+.term pre{padding:16px 18px 20px;font:14px/1.7 var(--mono);white-space:pre-wrap;min-height:7.5em}
+.ok{color:var(--bone)}.wr{color:var(--ember)}.er{color:var(--blood)}.pr{color:var(--dim)}
+.cur::after{content:"";display:inline-block;width:.6em;height:1.05em;background:var(--blood);vertical-align:-.15em;margin-left:2px;animation:bl .7s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.rec{position:relative;margin-top:18px;padding:20px 22px 22px 26px;border:1px solid #6b1b14;background:rgba(5,2,3,.88);animation:in .7s both;animation-delay:var(--d,0s)}
+.rec::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blood);box-shadow:0 0 18px var(--blood)}
+.rec h2{font-size:15px;color:var(--blood);letter-spacing:.08em;margin-bottom:12px}
+.rec dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 22px}
+.rec dt{color:var(--dim)}
+.rec dd{overflow-wrap:anywhere;font-weight:700}
+.empty{border-style:dashed;color:var(--bone)}
+.empty b{color:var(--blood);animation:bl 1.1s steps(1) infinite}
+@keyframes in{from{opacity:0;transform:translateY(14px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.tg{display:inline-flex;align-items:center;gap:10px;margin-top:34px;padding:13px 22px;border:2px solid var(--blood);background:rgba(5,2,3,.8);color:var(--bone);text-decoration:none;font-weight:700;box-shadow:0 0 28px rgba(255,42,26,.35);transition:background .2s,color .2s}
+.tg:hover,.tg:focus-visible{background:var(--blood);color:var(--ink)}
+.tg svg{width:20px;height:20px;fill:currentColor}
+@media (prefers-reduced-motion:reduce){.bg,.scan,h1,.cur::after,.empty b,.rec{animation:none}}
+@media (max-width:520px){.rec dl{grid-template-columns:1fr;gap:2px}.rec dd{margin-bottom:8px}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div><div class="veil" aria-hidden="true"></div><div class="scan" aria-hidden="true"></div>
+<nav class="nav" aria-label="Collegamenti"><a href="/">← Home</a><a href="https://t.me/RedGhostArmyV4" target="_blank" rel="noopener">Telegram</a></nav>
+
+<main class="wrap">
+ <h1>Registro</h1>
+ <p class="lead">Tutto ciò che viene fatto contro i nostri server viene registrato. E viene ricordato.</p>
+
+ <section class="term" aria-label="Archivio">
+  <header><i></i><i></i><i></i><span>rga@archive:~</span></header>
+  <pre id="out"><span class="pr">rga@archive:~$</span> cat registro.log
+<span class="ok">[ ok ]</span> archivio aperto</pre>
+ </section>
+
+ <div id="list" aria-live="polite"></div>
+
+ <a class="tg" href="https://t.me/RedGhostArmyV4" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 3.3 2.7 10.8c-1 .4-1 1.3-.2 1.6l4.9 1.5 1.9 5.8c.2.6.8.7 1.2.3l2.7-2.5 4.9 3.6c.8.5 1.5.2 1.7-.8l3.2-15.4c.3-1.1-.4-1.7-1.3-1.2zM8.6 13.2l9.6-6-7.7 7.2-.3 3.4z"/></svg>Canale Telegram</a>
+</main>
+
+<script>
+(function(){
+ var out=document.getElementById("out"),list=document.getElementById("list"),
+     calm=matchMedia("(prefers-reduced-motion: reduce)").matches,
+     sleep=function(ms){return new Promise(function(r){setTimeout(r,ms)})};
+ // Solo questi campi vengono mostrati: account Discord (username, nome visualizzato, ID).
+ var FIELDS=[["username","Username"],["nome","Nome visualizzato"],["id","ID Discord"],["violazione","Violazione"],["data","Data"]];
+ var NOISE="▒░▓#@%&/<>01";
+ function reveal(el,text,delay){
+  if(calm){el.textContent=text;return}
+  var i=0;
+  setTimeout(function step(){
+   i+=1.1;var s="";
+   for(var k=0;k<text.length;k++)s+=k<i?text[k]:(text[k]===" "?" ":NOISE[Math.random()*NOISE.length|0]);
+   el.textContent=s;
+   if(i<text.length+1)setTimeout(step,30);else el.textContent=text;
+  },delay);
+ }
+ async function line(cls,label,text){
+  var s1=document.createElement("span");s1.className=cls;s1.textContent=label;
+  var c=out.querySelector(".cur");if(c)c.remove();
+  out.appendChild(document.createTextNode("\n"));out.appendChild(s1);
+  var s2=document.createElement("span");out.appendChild(s2);
+  for(var k=0;k<text.length;k++){s2.textContent+=text[k];if(!calm)await sleep(14+Math.random()*12)}
+ }
+ function card(r,n){
+  var a=document.createElement("article");a.className="rec";a.style.setProperty("--d",(n*.35)+"s");
+  var h=document.createElement("h2");h.textContent="SOGGETTO #"+String(n+1).padStart(3,"0");a.appendChild(h);
+  var dl=document.createElement("dl");
+  FIELDS.forEach(function(f,k){
+   if(r[f[0]]==null||r[f[0]]==="")return;
+   var dt=document.createElement("dt"),dd=document.createElement("dd");
+   dt.textContent=f[1];dl.appendChild(dt);dl.appendChild(dd);
+   reveal(dd,String(r[f[0]]),n*350+400+k*180);
+  });
+  a.appendChild(dl);return a;
+ }
+ async function run(){
+  var data=[];
+  try{var res=await fetch("/registro.json",{cache:"no-store"});if(res.ok)data=await res.json()}catch(e){}
+  if(!Array.isArray(data))data=[];
+  await line("wr","[ .. ] ","lettura dei record");
+  await sleep(calm?0:350);
+  await line(data.length?"er":"ok",data.length?"[ !! ] ":"[ ok ] ",data.length?data.length+(data.length===1?" record trovato":" record trovati"):"nessun record pubblicato");
+  out.appendChild(Object.assign(document.createElement("span"),{className:"cur"}));
+  if(!data.length){
+   var e=document.createElement("article");e.className="rec empty";
+   e.innerHTML="<h2>ARCHIVIO IN AGGIORNAMENTO</h2><p>Le informazioni verranno pubblicate qui. <b>_</b></p>";
+   list.appendChild(e);return;
+  }
+  data.forEach(function(r,n){list.appendChild(card(r,n))});
+ }
+ run();
+})();
+</script>
+</body>
+</html>
